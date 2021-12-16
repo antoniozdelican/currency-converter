@@ -24,7 +24,7 @@ class ContentViewModel: ObservableObject {
             currencySelectionChanged()
         }
     }
-    @Published var fromCurrencyText = String(1.0) // check if can be done better
+    @Published var fromCurrencyText = String(1.0)
     @Published var toCurrencyText = ""
     @Published var rateText = ""
     
