@@ -25,13 +25,13 @@ The app comes with a single screen where user can:
 
 ## How to test the app
 
-Clone the repository to your local machine.
-
-Go in the root directory and run 
-```bash
-pod install
-```
-to install RxSwift and RxCocoa pods
+ In order to test the app, please follow:
+ - clone the repository to your local machine
+ - Go in the root directory and run
+ ```bash
+ pod install
+ ```
+ to install RxSwift and RxCocoa pods
 
 If you don't have CocoaPods get them here: https://cocoapods.org/
 
