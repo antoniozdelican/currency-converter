@@ -32,6 +32,10 @@ struct ContentView: View {
                     convertButton
                 }
                 Spacer()
+                if viewModel.isPickerShown {
+                    CurrencyPicker()
+                        .environmentObject(viewModel)
+                }
             }
             .padding(20)
             .navigationBarTitle(Text("Currency Converter"), displayMode: .inline)

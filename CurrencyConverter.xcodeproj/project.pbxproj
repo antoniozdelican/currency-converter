@@ -26,6 +26,7 @@
 		A9C8FFC4276B3C2A00FB90FD /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC3276B3C2A00FB90FD /* ConvertResponse.swift */; };
 		A9C8FFC6276B3ECC00FB90FD /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC5276B3ECC00FB90FD /* Currency.swift */; };
 		A9C8FFC8276B404500FB90FD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC7276B404500FB90FD /* ContentViewModel.swift */; };
+		A9C8FFCA276B537300FB90FD /* CurrencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC9276B537300FB90FD /* CurrencyPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		A9C8FFC3276B3C2A00FB90FD /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		A9C8FFC5276B3ECC00FB90FD /* Currency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		A9C8FFC7276B404500FB90FD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		A9C8FFC9276B537300FB90FD /* CurrencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPicker.swift; sourceTree = "<group>"; };
 		ADE3A0F95710BD649A5884B3 /* Pods-CurrencyConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.release.xcconfig"; sourceTree = "<group>"; };
 		D954BD55C3278DC0434532EF /* Pods-CurrencyConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 				A9A86D79276B32E20033C5C4 /* AppDelegate.swift */,
 				A9A86D7B276B32E20033C5C4 /* SceneDelegate.swift */,
 				A9A86D7D276B32E20033C5C4 /* ContentView.swift */,
+				A9C8FFC9276B537300FB90FD /* CurrencyPicker.swift */,
 				A9C8FFC7276B404500FB90FD /* ContentViewModel.swift */,
 				A9C8FFC5276B3ECC00FB90FD /* Currency.swift */,
 				A9C8FFB8276B391300FB90FD /* Models */,
@@ -388,6 +391,7 @@
 			files = (
 				A9C8FFC6276B3ECC00FB90FD /* Currency.swift in Sources */,
 				A9C8FFC8276B404500FB90FD /* ContentViewModel.swift in Sources */,
+				A9C8FFCA276B537300FB90FD /* CurrencyPicker.swift in Sources */,
 				A9C8FFBD276B396700FB90FD /* APIManager.swift in Sources */,
 				A9C8FFC4276B3C2A00FB90FD /* ConvertResponse.swift in Sources */,
 				A9C8FFB3276B364400FB90FD /* NetworkManager.swift in Sources */,

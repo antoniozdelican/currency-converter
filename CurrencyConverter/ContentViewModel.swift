@@ -17,6 +17,8 @@ class ContentViewModel: ObservableObject {
     @Published var rateText = ""
     
     @Published var firstConversionDone = false
+    
+    @Published var currencyPickerType = CurrencyPickerType.from
     @Published var isPickerShown = false
     
     let currencies: [Currency] = Currency.allCases
@@ -56,12 +58,12 @@ class ContentViewModel: ObservableObject {
     
     func fromButtonTapped() {
         isPickerShown = true
-        // TODO
+        currencyPickerType = .from
     }
     
     func toButtonTapped() {
         isPickerShown = true
-        // TODO
+        currencyPickerType = .to
     }
     
     func switchButtonTapped() {
