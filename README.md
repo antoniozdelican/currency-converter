@@ -40,5 +40,6 @@ Stuff missing or could be improved due to time restrictions:
  - some loading state when the convert button would be disabled before the first conversion
  - more unit tests specially for viewModel
  - cleaned the ContentView with more general views instead of everything in one struct (like it was done the with PickerView)
+ - improve FocusedTextFieldType logic - it's kinda messy now and it should be cleaner
 
 
