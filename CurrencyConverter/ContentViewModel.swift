@@ -9,6 +9,14 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     
+    @Published var fromCurrency = Currency.euro
+    @Published var toCurrency = Currency.britishPound
+    @Published var fromCurrencyText = String(1.0) // check if can be done better
+    @Published var toCurrencyText = ""
+    @Published var isPickerShown = false
+    
+    let currencies: [Currency] = Currency.allCases
+    
     private let apiManager: APIManagerProtocol
     
     init(apiManager: APIManagerProtocol) {
