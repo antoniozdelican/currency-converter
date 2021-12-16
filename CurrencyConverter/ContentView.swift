@@ -46,6 +46,9 @@ struct ContentView: View {
                 .padding(20)
             }
             .navigationBarTitle(Text("Currency Converter"), displayMode: .inline)
+            .alert(isPresented: $viewModel.isErrorAlertShown, content: {
+                Alert(title: Text("Error"), message: Text(viewModel.errorMessage))
+            })
         }
     }
     

@@ -34,6 +34,9 @@ class ContentViewModel: ObservableObject {
     @Published var focusedTextFieldType = FocusedTextFieldType.from
     @Published var isPickerShown = false
     
+    @Published var isErrorAlertShown = false
+    @Published var errorMessage = ""
+    
     let currencies: [Currency] = Currency.allCases
     
     private let apiManager: APIManagerProtocol
@@ -58,20 +61,17 @@ class ContentViewModel: ObservableObject {
                 switch self.focusedTextFieldType {
                 case .from,
                      .none:
-                    //self.rate = convertResponse.rate
-                    self.updateRateText(convertResponse.rate)
                     self.toCurrencyText = String(convertResponse.fromAmount * convertResponse.rate)
                 case .to:
-                    // rate is this oposite
-                    //self.updateRateText(convertResponse.fromAmount / convertResponse.toAmount)
                     self.fromCurrencyText = String(convertResponse.fromAmount * convertResponse.rate)
                 }
+                self.updateRateText(fromCurrency: convertResponse.from, toCurrency: convertResponse.to, rate: convertResponse.rate)
             }
         }, onError: { [weak self] error in
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
-                // TODO: add alert
-                print(error)
+                self.isErrorAlertShown = true
+                self.errorMessage = error.localizedDescription
             }
         }).disposed(by: disposeBag)
     }
@@ -120,9 +120,12 @@ class ContentViewModel: ObservableObject {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to:nil, from:nil, for:nil)
     }
     
-    private func updateRateText(_ rate: Float) {
-        rateText = "1 \(fromCurrency.rawValue) = \(rate) \(toCurrency.rawValue)"
+    private func updateRateText(fromCurrency: String, toCurrency: String, rate: Float) {
+        rateText = "1 \(fromCurrency) = \(rate) \(toCurrency)"
     }
+//    private func updateRateText(_ rate: Float) {
+//        rateText = "1 \(fromCurrency.rawValue) = \(rate) \(toCurrency.rawValue)"
+//    }
     
     private func currencySelectionChanged() {
         guard firstConversionDone == true else { return }
