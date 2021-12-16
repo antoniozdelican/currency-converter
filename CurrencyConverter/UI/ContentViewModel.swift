@@ -99,10 +99,10 @@ class ContentViewModel: ObservableObject {
     func currencyTextChanged(_ type: FocusedTextFieldType) {
         guard firstConversionDone == true else { return }
         guard focusedTextFieldType == type else { return }
-        if type == .from {
-            convert(fromCurrency: fromCurrency, toCurrency: toCurrency, amountText: fromCurrencyText)
-        } else if type == .to {
+        if type == .to {
             convert(fromCurrency: toCurrency, toCurrency: fromCurrency, amountText: toCurrencyText)
+        } else {
+            convert(fromCurrency: fromCurrency, toCurrency: toCurrency, amountText: fromCurrencyText)
         }
     }
     
