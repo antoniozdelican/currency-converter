@@ -44,7 +44,7 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.gray)
             Button {
-                // TODO
+                viewModel.fromButtonTapped()
             } label: {
                 HStack {
                     viewModel.fromCurrency.image
@@ -63,7 +63,7 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.gray)
             Button {
-                // TODO
+                viewModel.toButtonTapped()
             } label: {
                 HStack {
                     viewModel.toCurrency.image
@@ -79,7 +79,7 @@ struct ContentView: View {
     var switchButton: some View {
         VStack(alignment: .leading, spacing: 8) {
             Button {
-                // TODO
+                viewModel.switchButtonTapped()
             } label: {
                 HStack {
                     Image(systemName: "arrow.left.arrow.right")
@@ -140,7 +140,7 @@ struct ContentView: View {
                     .scaledToFit()
                     .frame(height: 10, alignment: .center)
                     .foregroundColor(.yellow)
-                Text("1 EUR = 0.922 GBP")
+                Text(viewModel.rateText)
                     .font(.subheadline)
                     .fontWeight(.bold)
             }

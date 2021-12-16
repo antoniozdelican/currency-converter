@@ -14,12 +14,14 @@ class ContentViewModel: ObservableObject {
     @Published var toCurrency = Currency.britishPound
     @Published var fromCurrencyText = String(1.0) // check if can be done better
     @Published var toCurrencyText = ""
+    @Published var rateText = ""
     
     @Published var firstConversionDone = false
     @Published var isPickerShown = false
     
     let currencies: [Currency] = Currency.allCases
     
+    private var rate: Float?
     private let apiManager: APIManagerProtocol
     private let disposeBag = DisposeBag()
     
@@ -34,33 +36,48 @@ class ContentViewModel: ObservableObject {
         let request = ConvertRequest(from: fromCurrency.rawValue, to: toCurrency.rawValue, amount: amount)
         
         apiManager.convert(request).subscribe(onNext: { [weak self] convertResponse in
-            guard let self = self else { return }
-            if self.firstConversionDone == false {
-                // TODO: improve this
-                DispatchQueue.main.async { [weak self] in
-                    self?.firstConversionDone = true
-                }
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                if self.firstConversionDone == false { self.firstConversionDone = true }
+                self.rate = convertResponse.rate
+                self.updateRateText(convertResponse.rate)
+                self.toCurrencyText = String(convertResponse.fromAmount * convertResponse.rate)
             }
-            print(convertResponse)
         }, onError: { [weak self] error in
-            guard let self = self else { return }
-            print(error)
-            // TODO: add alert
+            DispatchQueue.main.async { [weak self] in
+                guard let self = self else { return }
+                // TODO: add alert
+                print(error)
+            }
         }).disposed(by: disposeBag)
     }
     
     // MARK: - Buttons
     
     func fromButtonTapped() {
+        isPickerShown = true
         // TODO
     }
     
     func toButtonTapped() {
+        isPickerShown = true
         // TODO
     }
     
-    func convertButtonTapped() {
-        // TODO
+    func switchButtonTapped() {
+        isPickerShown = false
+        // Neetly swapping from and to currencies
+        (fromCurrency, toCurrency) = (toCurrency, fromCurrency)
+        guard firstConversionDone == true else { return }
         convert()
+    }
+    
+    func convertButtonTapped() {
+        isPickerShown = false
+        convert()
+    }
+    
+    private func updateRateText(_ rate: Float) {
+        rateText = "1 \(fromCurrency.rawValue) = \(rate) \(toCurrency.rawValue)"
     }
 }
