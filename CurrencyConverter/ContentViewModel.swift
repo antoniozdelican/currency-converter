@@ -57,7 +57,6 @@ class ContentViewModel: ObservableObject {
                 guard let self = self else { return }
                 if self.firstConversionDone == false { self.firstConversionDone = true }
                 
-                // TODO: check if this is correct
                 switch self.focusedTextFieldType {
                 case .from,
                      .none:
@@ -123,9 +122,6 @@ class ContentViewModel: ObservableObject {
     private func updateRateText(fromCurrency: String, toCurrency: String, rate: Float) {
         rateText = "1 \(fromCurrency) = \(rate) \(toCurrency)"
     }
-//    private func updateRateText(_ rate: Float) {
-//        rateText = "1 \(fromCurrency.rawValue) = \(rate) \(toCurrency.rawValue)"
-//    }
     
     private func currencySelectionChanged() {
         guard firstConversionDone == true else { return }
