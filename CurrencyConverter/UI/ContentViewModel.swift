@@ -70,7 +70,7 @@ class ContentViewModel: ObservableObject {
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.isErrorAlertShown = true
-                self.errorMessage = error.localizedDescription
+                self.errorMessage = "Error in conversion"
             }
         }).disposed(by: disposeBag)
     }

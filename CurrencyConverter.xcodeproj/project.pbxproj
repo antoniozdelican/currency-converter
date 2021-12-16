@@ -141,10 +141,7 @@
 			children = (
 				A9A86D79276B32E20033C5C4 /* AppDelegate.swift */,
 				A9A86D7B276B32E20033C5C4 /* SceneDelegate.swift */,
-				A9A86D7D276B32E20033C5C4 /* ContentView.swift */,
-				A9C8FFC9276B537300FB90FD /* CurrencyPicker.swift */,
-				A9C8FFC7276B404500FB90FD /* ContentViewModel.swift */,
-				A9C8FFC5276B3ECC00FB90FD /* Currency.swift */,
+				A9C8FFD6276B71F100FB90FD /* UI */,
 				A9C8FFB8276B391300FB90FD /* Models */,
 				A9C8FFBB276B395400FB90FD /* API */,
 				A9C8FFB1276B363700FB90FD /* Network */,
@@ -191,6 +188,7 @@
 			children = (
 				A9C8FFB9276B392100FB90FD /* ConvertRequest.swift */,
 				A9C8FFC3276B3C2A00FB90FD /* ConvertResponse.swift */,
+				A9C8FFC5276B3ECC00FB90FD /* Currency.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -235,6 +233,16 @@
 				A9C8FFD2276B693B00FB90FD /* APIManagerTests.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		A9C8FFD6276B71F100FB90FD /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A9A86D7D276B32E20033C5C4 /* ContentView.swift */,
+				A9C8FFC9276B537300FB90FD /* CurrencyPicker.swift */,
+				A9C8FFC7276B404500FB90FD /* ContentViewModel.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
