@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol APIManagerProtocol {
-    func convert(_ request: ConvertRequest) -> Observable<Data> // for now until I see what's the response
+    func convert(_ request: ConvertRequest) -> Observable<ConvertResponse>
 }
 
 class APIManager: APIManagerProtocol {
@@ -21,18 +21,21 @@ class APIManager: APIManagerProtocol {
         self.networkManager = networkManager
     }
     
-    func convert(_ request: ConvertRequest) -> Observable<Data> {
+    func convert(_ request: ConvertRequest) -> Observable<ConvertResponse> {
         let apiRequest = APIRequest.convert(request)
         
-        // TODO: change this to ConvertResponse
-        return Observable<Data>.create { [weak self] observer in
+        return Observable<ConvertResponse>.create { [weak self] observer in
             guard let self = self else {
                 observer.onError(NetworkError.generic)
                 return Disposables.create()
             }
             self.networkManager.request(request: apiRequest).subscribe(onNext: { data in
-                // TODO: change this to ConvertResponse
-                observer.onNext(data)
+                do {
+                    let convertResponse = try JSONDecoder().decode(ConvertResponse.self, from: data)
+                    observer.onNext(convertResponse)
+                } catch {
+                    observer.onError(error)
+                }
             }, onError: { error in
                 observer.onError(error)
             }).disposed(by: self.disposeBag)

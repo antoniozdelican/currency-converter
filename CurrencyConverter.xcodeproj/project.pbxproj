@@ -23,6 +23,7 @@
 		A9C8FFBD276B396700FB90FD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFBC276B396700FB90FD /* APIManager.swift */; };
 		A9C8FFBF276B397000FB90FD /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFBE276B397000FB90FD /* APIRequest.swift */; };
 		A9C8FFC2276B3AE200FB90FD /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC1276B3AE200FB90FD /* Codable.swift */; };
+		A9C8FFC4276B3C2A00FB90FD /* ConvertResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC3276B3C2A00FB90FD /* ConvertResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		A9C8FFBC276B396700FB90FD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A9C8FFBE276B397000FB90FD /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		A9C8FFC1276B3AE200FB90FD /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
+		A9C8FFC3276B3C2A00FB90FD /* ConvertResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertResponse.swift; sourceTree = "<group>"; };
 		ADE3A0F95710BD649A5884B3 /* Pods-CurrencyConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.release.xcconfig"; sourceTree = "<group>"; };
 		D954BD55C3278DC0434532EF /* Pods-CurrencyConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				A9C8FFB9276B392100FB90FD /* ConvertRequest.swift */,
+				A9C8FFC3276B3C2A00FB90FD /* ConvertResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9C8FFBD276B396700FB90FD /* APIManager.swift in Sources */,
+				A9C8FFC4276B3C2A00FB90FD /* ConvertResponse.swift in Sources */,
 				A9C8FFB3276B364400FB90FD /* NetworkManager.swift in Sources */,
 				A9A86D7A276B32E20033C5C4 /* AppDelegate.swift in Sources */,
 				A9A86D7C276B32E20033C5C4 /* SceneDelegate.swift in Sources */,
