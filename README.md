@@ -16,7 +16,7 @@ The app comes with a single screen where user can:
  - choose which currency to convert to
  - enter desired amount to convert
 
- Tapping on the convert button, the inital API request is done towards backend. Upon response, the UI is updated with the converted amount together with the exchange rate. 
+Tapping on the convert button, the inital API request is done towards backend. Upon response, the UI is updated with the converted amount together with the exchange rate. 
 
  After the inital conversion, the convert button is no longer shown and all the conversion requests are done dynamically as user interacts with the screen:
  - when user inputs values in either of the text fields
@@ -31,15 +31,12 @@ The app comes with a single screen where user can:
  ```bash
  pod install
  ```
- to install RxSwift and RxCocoa pods
-
-If you don't have CocoaPods get them here: https://cocoapods.org/
-
-Open Xcode and run the app.
+ to install RxSwift and RxCocoa pods. If you don't have CocoaPods get them here: https://cocoapods.org/
+- open Xcode and run the app
 
 ## Improvements
 
- Stuff missing or could be improved due to time restrictions:
+Stuff missing or could be improved due to time restrictions:
  - some loading state when the convert button would be disabled before the first conversion
  - more unit tests specially for viewModel
  - cleaned the ContentView with more general views instead of everything in one struct (like it was done the with PickerView)
