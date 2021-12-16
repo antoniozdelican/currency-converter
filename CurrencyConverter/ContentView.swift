@@ -13,13 +13,19 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
+            VStack(spacing: 30) {
                 HStack(alignment: .bottom, spacing: 10) {
                     fromButton
                     switchButton
                         .frame(width: 40)
                     toButton
                 }
+                HStack(alignment: .bottom, spacing: 60) {
+                    fromTextField
+                    toTextField
+                }
+                infoView
+                convertButton
                 Spacer()
             }
             .padding(20)
@@ -28,7 +34,7 @@ struct ContentView: View {
     }
     
     var fromButton: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("FROM:")
                 .font(.caption)
                 .foregroundColor(.gray)
@@ -47,7 +53,7 @@ struct ContentView: View {
     }
     
     var toButton: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             Text("TO:")
                 .font(.caption)
                 .foregroundColor(.gray)
@@ -66,7 +72,7 @@ struct ContentView: View {
     }
     
     var switchButton: some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 8) {
             Button {
                 // TODO
             } label: {
@@ -76,6 +82,66 @@ struct ContentView: View {
             }
             Divider()
                 .opacity(0)
+        }
+    }
+    
+    var fromTextField: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("AMOUNT:")
+                .font(.caption)
+                .foregroundColor(.gray)
+            HStack(spacing: 5) {
+                TextField("", text: $viewModel.fromCurrencyText)
+                    .keyboardType(.decimalPad)
+                Text(viewModel.fromCurrency.rawValue)
+                    .foregroundColor(.gray)
+            }
+            Divider()
+        }
+    }
+    
+    var toTextField: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("CONVERTED TO:")
+                .font(.caption)
+                .foregroundColor(.gray)
+            HStack(spacing: 5) {
+                TextField("", text: $viewModel.toCurrencyText)
+                    .keyboardType(.decimalPad)
+                Text(viewModel.toCurrency.rawValue)
+                    .foregroundColor(.gray)
+            }
+            Divider()
+        }
+    }
+    
+    var convertButton: some View {
+        Button {
+            // TODO
+        } label: {
+            Text("Convert")
+                .frame(height: 50)
+                .frame(maxWidth: .infinity)
+        }
+        .foregroundColor(.white)
+        .background(Color.green)
+    }
+    
+    var infoView: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            HStack {
+                Image(systemName: "circle")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 10, alignment: .center)
+                    .foregroundColor(.yellow)
+                Text("1 EUR = 0.922 GBP")
+                    .font(.subheadline)
+                    .fontWeight(.bold)
+            }
+            Text("All figures are live mid-market rates, which are for informational purposes only. To see the rates for money transfer, please select sending money option.")
+                .font(.caption)
+                .foregroundColor(.gray)
         }
     }
 }
