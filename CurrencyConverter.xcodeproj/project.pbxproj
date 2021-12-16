@@ -22,6 +22,7 @@
 		A9C8FFBA276B392100FB90FD /* ConvertRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFB9276B392100FB90FD /* ConvertRequest.swift */; };
 		A9C8FFBD276B396700FB90FD /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFBC276B396700FB90FD /* APIManager.swift */; };
 		A9C8FFBF276B397000FB90FD /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFBE276B397000FB90FD /* APIRequest.swift */; };
+		A9C8FFC2276B3AE200FB90FD /* Codable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFC1276B3AE200FB90FD /* Codable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		A9C8FFB9276B392100FB90FD /* ConvertRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertRequest.swift; sourceTree = "<group>"; };
 		A9C8FFBC276B396700FB90FD /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		A9C8FFBE276B397000FB90FD /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
+		A9C8FFC1276B3AE200FB90FD /* Codable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Codable.swift; sourceTree = "<group>"; };
 		ADE3A0F95710BD649A5884B3 /* Pods-CurrencyConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.release.xcconfig"; sourceTree = "<group>"; };
 		D954BD55C3278DC0434532EF /* Pods-CurrencyConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -129,6 +131,7 @@
 				A9C8FFB8276B391300FB90FD /* Models */,
 				A9C8FFBB276B395400FB90FD /* API */,
 				A9C8FFB1276B363700FB90FD /* Network */,
+				A9C8FFC0276B3AD400FB90FD /* Extensions */,
 				A9A86D7F276B32E20033C5C4 /* Assets.xcassets */,
 				A9A86D84276B32E20033C5C4 /* LaunchScreen.storyboard */,
 				A9A86D87276B32E20033C5C4 /* Info.plist */,
@@ -179,6 +182,14 @@
 				A9C8FFBE276B397000FB90FD /* APIRequest.swift */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		A9C8FFC0276B3AD400FB90FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A9C8FFC1276B3AE200FB90FD /* Codable.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +385,7 @@
 				A9A86D7E276B32E20033C5C4 /* ContentView.swift in Sources */,
 				A9C8FFB5276B365100FB90FD /* NetworkRequest.swift in Sources */,
 				A9C8FFBF276B397000FB90FD /* APIRequest.swift in Sources */,
+				A9C8FFC2276B3AE200FB90FD /* Codable.swift in Sources */,
 				A9C8FFBA276B392100FB90FD /* ConvertRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
