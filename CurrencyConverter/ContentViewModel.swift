@@ -10,8 +10,16 @@ import RxSwift
 
 class ContentViewModel: ObservableObject {
     
-    @Published var fromCurrency = Currency.euro
-    @Published var toCurrency = Currency.britishPound
+    @Published var fromCurrency = Currency.euro {
+        didSet {
+            currencySelectionChanged()
+        }
+    }
+    @Published var toCurrency = Currency.britishPound {
+        didSet {
+            currencySelectionChanged()
+        }
+    }
     @Published var fromCurrencyText = String(1.0) // check if can be done better
     @Published var toCurrencyText = ""
     @Published var rateText = ""
@@ -81,5 +89,10 @@ class ContentViewModel: ObservableObject {
     
     private func updateRateText(_ rate: Float) {
         rateText = "1 \(fromCurrency.rawValue) = \(rate) \(toCurrency.rawValue)"
+    }
+    
+    private func currencySelectionChanged() {
+        guard firstConversionDone == true else { return }
+        convert()
     }
 }
