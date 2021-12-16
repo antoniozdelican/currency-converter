@@ -16,6 +16,9 @@
 		A9A86D83276B32E20033C5C4 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9A86D82276B32E20033C5C4 /* Preview Assets.xcassets */; };
 		A9A86D86276B32E20033C5C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9A86D84276B32E20033C5C4 /* LaunchScreen.storyboard */; };
 		A9A86D91276B32E30033C5C4 /* CurrencyConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9A86D90276B32E30033C5C4 /* CurrencyConverterTests.swift */; };
+		A9C8FFB3276B364400FB90FD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFB2276B364400FB90FD /* NetworkManager.swift */; };
+		A9C8FFB5276B365100FB90FD /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFB4276B365100FB90FD /* NetworkRequest.swift */; };
+		A9C8FFB7276B365D00FB90FD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9C8FFB6276B365D00FB90FD /* NetworkError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		A9A86D8C276B32E30033C5C4 /* CurrencyConverterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CurrencyConverterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9A86D90276B32E30033C5C4 /* CurrencyConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyConverterTests.swift; sourceTree = "<group>"; };
 		A9A86D92276B32E30033C5C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9C8FFB2276B364400FB90FD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		A9C8FFB4276B365100FB90FD /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		A9C8FFB6276B365D00FB90FD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		ADE3A0F95710BD649A5884B3 /* Pods-CurrencyConverter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.release.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.release.xcconfig"; sourceTree = "<group>"; };
 		D954BD55C3278DC0434532EF /* Pods-CurrencyConverter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CurrencyConverter.debug.xcconfig"; path = "Target Support Files/Pods-CurrencyConverter/Pods-CurrencyConverter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +120,7 @@
 				A9A86D79276B32E20033C5C4 /* AppDelegate.swift */,
 				A9A86D7B276B32E20033C5C4 /* SceneDelegate.swift */,
 				A9A86D7D276B32E20033C5C4 /* ContentView.swift */,
+				A9C8FFB1276B363700FB90FD /* Network */,
 				A9A86D7F276B32E20033C5C4 /* Assets.xcassets */,
 				A9A86D84276B32E20033C5C4 /* LaunchScreen.storyboard */,
 				A9A86D87276B32E20033C5C4 /* Info.plist */,
@@ -137,6 +144,16 @@
 				A9A86D92276B32E30033C5C4 /* Info.plist */,
 			);
 			path = CurrencyConverterTests;
+			sourceTree = "<group>";
+		};
+		A9C8FFB1276B363700FB90FD /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				A9C8FFB2276B364400FB90FD /* NetworkManager.swift */,
+				A9C8FFB4276B365100FB90FD /* NetworkRequest.swift */,
+				A9C8FFB6276B365D00FB90FD /* NetworkError.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,9 +341,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C8FFB3276B364400FB90FD /* NetworkManager.swift in Sources */,
 				A9A86D7A276B32E20033C5C4 /* AppDelegate.swift in Sources */,
 				A9A86D7C276B32E20033C5C4 /* SceneDelegate.swift in Sources */,
+				A9C8FFB7276B365D00FB90FD /* NetworkError.swift in Sources */,
 				A9A86D7E276B32E20033C5C4 /* ContentView.swift in Sources */,
+				A9C8FFB5276B365100FB90FD /* NetworkRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
