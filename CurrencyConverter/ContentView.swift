@@ -13,31 +13,38 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 30) {
-                HStack(alignment: .bottom, spacing: 10) {
-                    fromButton
-                    switchButton
-                        .frame(width: 40)
-                    toButton
-                }
-                HStack(alignment: .bottom, spacing: 60) {
-                    fromTextField
+            ZStack {
+                Color.white
+                    .onTapGesture {
+                        viewModel.isPickerShown = false
+                        viewModel.hideKeyboard()
+                    }
+                VStack(spacing: 30) {
+                    HStack(alignment: .bottom, spacing: 10) {
+                        fromButton
+                        switchButton
+                            .frame(width: 40)
+                        toButton
+                    }
+                    HStack(alignment: .bottom, spacing: 60) {
+                        fromTextField
+                        if viewModel.firstConversionDone {
+                            toTextField
+                        }
+                    }
                     if viewModel.firstConversionDone {
-                        toTextField
+                        infoView
+                    } else {
+                        convertButton
+                    }
+                    Spacer()
+                    if viewModel.isPickerShown {
+                        CurrencyPicker()
+                            .environmentObject(viewModel)
                     }
                 }
-                if viewModel.firstConversionDone {
-                    infoView
-                } else {
-                    convertButton
-                }
-                Spacer()
-                if viewModel.isPickerShown {
-                    CurrencyPicker()
-                        .environmentObject(viewModel)
-                }
+                .padding(20)
             }
-            .padding(20)
             .navigationBarTitle(Text("Currency Converter"), displayMode: .inline)
         }
     }
@@ -100,7 +107,16 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.gray)
             HStack(spacing: 5) {
-                TextField("", text: $viewModel.fromCurrencyText)
+                TextField("", text: $viewModel.fromCurrencyText, onEditingChanged: { editingChanged in
+                    if editingChanged {
+                        viewModel.focusedTextFieldType = .from
+                    }
+                })
+                    .onReceive(viewModel.$fromCurrencyText.debounce(for: .seconds(1), scheduler: DispatchQueue.main)) {
+                        guard !$0.isEmpty else { return }
+                        // Fire convert request 1 sec after user ends typing into textField
+                        viewModel.fromCurrencyTextChanged()
+                    }
                     .keyboardType(.decimalPad)
                 Text(viewModel.fromCurrency.rawValue)
                     .foregroundColor(.gray)
@@ -115,7 +131,14 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.gray)
             HStack(spacing: 5) {
-                TextField("", text: $viewModel.toCurrencyText)
+                TextField("", text: $viewModel.toCurrencyText, onEditingChanged: { editingChanged in
+                    viewModel.focusedTextFieldType = editingChanged ? .to : .none
+                })
+                    .onReceive(viewModel.$toCurrencyText.debounce(for: .seconds(1), scheduler: DispatchQueue.main)) {
+                        guard !$0.isEmpty else { return }
+                        // Fire convert request 1 sec after user ends typing into textField
+                        viewModel.toCurrencyTextChanged()
+                    }
                     .keyboardType(.decimalPad)
                 Text(viewModel.toCurrency.rawValue)
                     .foregroundColor(.gray)
