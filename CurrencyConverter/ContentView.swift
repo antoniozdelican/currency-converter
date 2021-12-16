@@ -22,10 +22,15 @@ struct ContentView: View {
                 }
                 HStack(alignment: .bottom, spacing: 60) {
                     fromTextField
-                    toTextField
+                    if viewModel.firstConversionDone {
+                        toTextField
+                    }
                 }
-                infoView
-                convertButton
+                if viewModel.firstConversionDone {
+                    infoView
+                } else {
+                    convertButton
+                }
                 Spacer()
             }
             .padding(20)
@@ -117,7 +122,7 @@ struct ContentView: View {
     
     var convertButton: some View {
         Button {
-            // TODO
+            viewModel.convertButtonTapped()
         } label: {
             Text("Convert")
                 .frame(height: 50)
