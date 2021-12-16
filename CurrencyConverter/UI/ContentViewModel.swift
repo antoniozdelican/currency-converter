@@ -58,11 +58,10 @@ class ContentViewModel: ObservableObject {
                 if self.firstConversionDone == false { self.firstConversionDone = true }
                 
                 switch self.focusedTextFieldType {
-                case .from,
-                     .none:
-                    self.toCurrencyText = String(convertResponse.fromAmount * convertResponse.rate)
                 case .to:
                     self.fromCurrencyText = String(convertResponse.fromAmount * convertResponse.rate)
+                default:
+                    self.toCurrencyText = String(convertResponse.fromAmount * convertResponse.rate)
                 }
                 self.updateRateText(fromCurrency: convertResponse.from, toCurrency: convertResponse.to, rate: convertResponse.rate)
             }
@@ -77,15 +76,9 @@ class ContentViewModel: ObservableObject {
     
     // MARK: - Buttons
     
-    func fromButtonTapped() {
+    func currencySelectionButtonTapped(_ type: CurrencyPickerType) {
         isPickerShown = true
-        currencyPickerType = .from
-        hideKeyboard()
-    }
-    
-    func toButtonTapped() {
-        isPickerShown = true
-        currencyPickerType = .to
+        currencyPickerType = type
         hideKeyboard()
     }
     
@@ -103,16 +96,14 @@ class ContentViewModel: ObservableObject {
         convert(fromCurrency: fromCurrency, toCurrency: toCurrency, amountText: fromCurrencyText)
     }
     
-    func fromCurrencyTextChanged() {
+    func currencyTextChanged(_ type: FocusedTextFieldType) {
         guard firstConversionDone == true else { return }
-        guard focusedTextFieldType == .from else { return }
-        convert(fromCurrency: fromCurrency, toCurrency: toCurrency, amountText: fromCurrencyText)
-    }
-    
-    func toCurrencyTextChanged() {
-        guard firstConversionDone == true else { return }
-        guard focusedTextFieldType == .to else { return }
-        convert(fromCurrency: toCurrency, toCurrency: fromCurrency, amountText: toCurrencyText)
+        guard focusedTextFieldType == type else { return }
+        if type == .from {
+            convert(fromCurrency: fromCurrency, toCurrency: toCurrency, amountText: fromCurrencyText)
+        } else if type == .to {
+            convert(fromCurrency: toCurrency, toCurrency: fromCurrency, amountText: toCurrencyText)
+        }
     }
     
     func hideKeyboard() {

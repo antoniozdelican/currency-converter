@@ -58,7 +58,7 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.gray)
             Button {
-                viewModel.fromButtonTapped()
+                viewModel.currencySelectionButtonTapped(.from)
             } label: {
                 HStack {
                     viewModel.fromCurrency.image
@@ -77,7 +77,7 @@ struct ContentView: View {
                 .font(.caption)
                 .foregroundColor(.gray)
             Button {
-                viewModel.toButtonTapped()
+                viewModel.currencySelectionButtonTapped(.to)
             } label: {
                 HStack {
                     viewModel.toCurrency.image
@@ -118,7 +118,7 @@ struct ContentView: View {
                     .onReceive(viewModel.$fromCurrencyText.debounce(for: .seconds(1), scheduler: DispatchQueue.main)) {
                         guard !$0.isEmpty else { return }
                         // Fire convert request 1 sec after user ends typing into textField
-                        viewModel.fromCurrencyTextChanged()
+                        viewModel.currencyTextChanged(.from)
                     }
                     .keyboardType(.decimalPad)
                 Text(viewModel.fromCurrency.rawValue)
@@ -140,7 +140,7 @@ struct ContentView: View {
                     .onReceive(viewModel.$toCurrencyText.debounce(for: .seconds(1), scheduler: DispatchQueue.main)) {
                         guard !$0.isEmpty else { return }
                         // Fire convert request 1 sec after user ends typing into textField
-                        viewModel.toCurrencyTextChanged()
+                        viewModel.currencyTextChanged(.to)
                     }
                     .keyboardType(.decimalPad)
                 Text(viewModel.toCurrency.rawValue)
