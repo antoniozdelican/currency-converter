@@ -12,7 +12,6 @@ struct ConvertResponse: Codable {
     let from: String
     let to: String
     let rate: Float
-    let amount: Float
     let fromAmount: Float
     let toAmount: Float
 }

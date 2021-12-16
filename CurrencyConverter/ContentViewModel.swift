@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 class ContentViewModel: ObservableObject {
     
@@ -20,6 +21,7 @@ class ContentViewModel: ObservableObject {
     let currencies: [Currency] = Currency.allCases
     
     private let apiManager: APIManagerProtocol
+    private let disposeBag = DisposeBag()
     
     init(apiManager: APIManagerProtocol) {
         self.apiManager = apiManager
@@ -28,8 +30,23 @@ class ContentViewModel: ObservableObject {
     // MARK: - Functions
     
     private func convert() {
-        // TODO: network call
-        if firstConversionDone == false { firstConversionDone = true }
+        guard let amount = Float(fromCurrencyText) else { return }
+        let request = ConvertRequest(from: fromCurrency.rawValue, to: toCurrency.rawValue, amount: amount)
+        
+        apiManager.convert(request).subscribe(onNext: { [weak self] convertResponse in
+            guard let self = self else { return }
+            if self.firstConversionDone == false {
+                // TODO: improve this
+                DispatchQueue.main.async { [weak self] in
+                    self?.firstConversionDone = true
+                }
+            }
+            print(convertResponse)
+        }, onError: { [weak self] error in
+            guard let self = self else { return }
+            print(error)
+            // TODO: add alert
+        }).disposed(by: disposeBag)
     }
     
     // MARK: - Buttons
